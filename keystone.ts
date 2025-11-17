@@ -7,7 +7,7 @@ export default withAuth(
   config({
     server: {
       cors: {
-        origin: ['http://localhost:3001', 'http://temp.solmee.xyz:3001'],
+        origin: ['http://localhost:3001', 'http://temp.solmi.wiki:3001'],
         credentials: true,
       },
     },
