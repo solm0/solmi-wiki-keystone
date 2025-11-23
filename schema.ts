@@ -253,8 +253,8 @@ export const lists = {
           cardFields: ['name', 'id'],
           linkToItem: true,
           inlineConnect: true,
-          inlineCreate: { fields: ['name', 'langtitude', 'latitude']},
-          inlineEdit: { fields: ['name', 'langtitude', 'latitude']},
+          inlineCreate: { fields: ['name', 'latitude', 'langtitude']},
+          inlineEdit: { fields: ['name', 'latitude', 'langtitude']},
         }
       })
     },
@@ -283,8 +283,8 @@ export const lists = {
     access: allowAll,
     fields: {
       name: text(),
-      langtitude: text(),
       latitude: text(),
+      langtitude: text(),
       posts: relationship({ ref: 'Post.places', many: true}),
     }
   })
