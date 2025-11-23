@@ -321,4 +321,30 @@ export const componentBlocks = {
     },
     chromeless: true,
   }),
+
+  place: component({
+    label: 'Place',
+    schema: {
+      placeId: fields.child({
+        kind: 'inline',
+        placeholder: '이 글에 연결된 Place의 id를 복붙하세요',
+      }),
+    },
+    preview: (props) => {
+      return (
+        <div
+          style={{
+            padding: '0.75em 1em',
+            margin: '1em 0',
+            borderRadius: '6px',
+            border: '1px solid #ddd',
+          }}
+        >
+          <p style={{ margin: 0, fontWeight: 'bold' }}>
+            {props.fields.placeId.element}
+          </p>
+        </div>
+      );
+    },
+  }),
 };

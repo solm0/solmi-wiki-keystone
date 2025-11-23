@@ -244,6 +244,19 @@ export const lists = {
         defaultValue: 'draft',
         ui: { displayMode: 'segmented-control' },
       }),
+
+      places: relationship({
+        ref: 'Place.posts',
+        many: true,
+        ui: {
+          displayMode: 'cards',
+          cardFields: ['name', 'id'],
+          linkToItem: true,
+          inlineConnect: true,
+          inlineCreate: { fields: ['name', 'langtitude', 'latitude']},
+          inlineEdit: { fields: ['name', 'langtitude', 'latitude']},
+        }
+      })
     },
   }),
 
@@ -265,5 +278,15 @@ export const lists = {
       posts: relationship({ ref: 'Post.keywords', many: true }),
     },
   }),
+
+  Place: list({
+    access: allowAll,
+    fields: {
+      name: text(),
+      langtitude: text(),
+      latitude: text(),
+      posts: relationship({ ref: 'Post.places', many: true}),
+    }
+  })
 
 } satisfies Lists
