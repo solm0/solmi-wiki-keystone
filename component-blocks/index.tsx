@@ -319,7 +319,6 @@ export const componentBlocks = {
         placeholder: '',
       })
     },
-    chromeless: true,
   }),
 
   place: component({
@@ -344,6 +343,21 @@ export const componentBlocks = {
             {props.fields.placeId.element}
           </p>
         </div>
+      );
+    },
+  }),
+  
+  componentPreview: component({
+    label: 'ComponentPreview',
+    schema: {
+      compName: fields.child({
+        kind: 'inline',
+        placeholder: '컴포넌트 이름을 적으세요(kebab-case)',
+      })
+    },
+    preview: (props) => {
+      return (
+        <span>{props.fields.compName.element}</span>
       );
     },
   }),

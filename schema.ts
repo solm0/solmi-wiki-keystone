@@ -287,6 +287,6 @@ export const lists = {
       lng: text(),
       posts: relationship({ ref: 'Post.places', many: true}),
     }
-  })
+  }),
 
 } satisfies Lists
