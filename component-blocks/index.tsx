@@ -361,4 +361,42 @@ export const componentBlocks = {
       );
     },
   }),
+
+  footnote: component({
+    label: 'Footnote',
+    schema: {
+      text: fields.child({
+        kind: 'inline',
+        placeholder: '참고문헌 정보',
+      }),
+      link: fields.child({
+        kind: 'inline',
+        placeholder: '참고문헌 링크',
+      }),
+    },
+    preview: (props) => {
+      return (
+        <div className='flex flex-col gap-2'>
+          <div
+            style={{
+              padding: '0.75em 1em',
+              borderRadius: '6px',
+              border: '1px solid #ddd',
+            }}
+          >
+            {props.fields.text.element}
+          </div>
+          <div
+            style={{
+              padding: '0.75em 1em',
+              borderRadius: '6px',
+              border: '1px solid #ddd',
+            }}
+          >
+            {props.fields.link.element}
+          </div>
+        </div>
+      );
+    },
+  }),
 };
