@@ -246,9 +246,12 @@ export const componentBlocks = {
           >
             {props.fields.items.elements.map(item => {
               const cloudName = "dpqjfptr6";
-              const publicId = item.fields.imageSrc.value;
+              const type = item.fields.type.value === 'audio'
+                ? 'video'
+                : item.fields.type.value;
               const transformations = "f_auto,q_auto,w_800";
-              const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/${transformations}/${publicId}.jpg`;
+              const publicId = item.fields.imageSrc.value;
+              const imageUrl = `https://res.cloudinary.com/${cloudName}/${type}/upload/${transformations}/${publicId}.jpg`;
 
               return (
                 <div
@@ -298,6 +301,15 @@ export const componentBlocks = {
           imageSrc: fields.url({
             label: 'Image URL',
             defaultValue: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809',
+          }),
+          type: fields.select({
+            options: [
+              { label: 'Image', value: 'image' },
+              { label: 'Video', value: 'video' },
+              { label: 'Audio', value: 'audio' },
+            ],
+            defaultValue: 'image',
+            ui: { displayMode: 'segmented-control' },
           }),
         })
       ),
