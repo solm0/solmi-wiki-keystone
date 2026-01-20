@@ -11,6 +11,7 @@ import {
   checkbox,
   integer,
   virtual,
+  json,
 } from '@keystone-6/core/fields'
 
 import { document } from '@keystone-6/fields-document'
@@ -256,6 +257,17 @@ export const lists = {
           inlineCreate: { fields: ['name', 'lat', 'lng']},
           inlineEdit: { fields: ['name', 'lat', 'lng']},
         }
+      }),
+
+      playlists: relationship({
+        ref: 'Playlist.posts',
+        many: true,
+        ui: {
+          displayMode: 'cards',
+          cardFields: ['title'],
+          linkToItem: true,
+          inlineConnect: true,
+        }
       })
     },
   }),
@@ -288,5 +300,59 @@ export const lists = {
       posts: relationship({ ref: 'Post.places', many: true}),
     }
   }),
+
+  Playlist: list({
+    access: allowAll,
+    fields: {
+      title: text(),
+      posts: relationship({
+        ref: 'Post.playlists',
+        many: true,
+        ui: {
+          displayMode: 'cards',
+          cardFields: ['title'],
+          linkToItem: true,
+          inlineConnect: true,
+        }
+      }),
+      songs: relationship({
+        ref: 'Song.playlists',
+        many: true,
+        ui: {
+          displayMode: 'cards',
+          cardFields: ['title', 'artist'],
+          linkToItem: true,
+          inlineConnect: true,
+          inlineCreate: { fields: ['title'] },
+        }
+      })
+    }
+  }),
+
+  Song: list({
+    access: allowAll,
+    fields: {
+      title: text({ validation: { isRequired: true }}),
+      artist: text(),
+      album: text(),
+      youtubeVideoId: text({ validation: { isRequired: true }}),
+      desc: text(),
+      lyric: json({
+        defaultValue: {},
+        db: { map: 'lyric_json' },
+      }),
+      playlists: relationship({
+        ref: 'Playlist.songs',
+        many: true,
+        ui: {
+          displayMode: 'cards',
+          cardFields: ['title'],
+          linkToItem: true,
+          inlineConnect: true,
+          inlineCreate: { fields: ['title'] },
+        }
+      })
+    }
+  })
 
 } satisfies Lists
