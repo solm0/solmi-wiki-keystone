@@ -338,7 +338,10 @@ export const lists = {
       artist: text(),
       album: text(),
       thumbnailId: text(),
-      youtubeVideoId: text({ validation: { isRequired: true }}),
+      youtubeVideoId: text(),
+      language: text(),
+      country: text(),
+      releaseYear: text(),
       desc: text(),
       lyric: json({
         defaultValue: {},
