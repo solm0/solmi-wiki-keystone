@@ -21,6 +21,7 @@ import getAllKeywords from './lib/get-all-keywords'
 import getText from './lib/get-text'
 import saveKeywords from './lib/save-keywords'
 import { componentBlocks } from './component-blocks'
+import { field } from '@keystone-6/core/dist/declarations/src/types/schema/schema-api-with-context'
 
 export const lists = {
   User: list({
@@ -267,6 +268,7 @@ export const lists = {
           cardFields: ['title'],
           linkToItem: true,
           inlineConnect: true,
+          inlineCreate: { fields: ['title'] },
         }
       })
     },
@@ -323,7 +325,7 @@ export const lists = {
           cardFields: ['title', 'artist'],
           linkToItem: true,
           inlineConnect: true,
-          inlineCreate: { fields: ['title'] },
+          inlineCreate: { fields: ['title', 'youtubeVideoId'] },
         }
       })
     }
@@ -335,6 +337,7 @@ export const lists = {
       title: text({ validation: { isRequired: true }}),
       artist: text(),
       album: text(),
+      thumbnailId: text(),
       youtubeVideoId: text({ validation: { isRequired: true }}),
       desc: text(),
       lyric: json({
