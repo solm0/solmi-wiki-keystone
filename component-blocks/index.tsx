@@ -311,6 +311,14 @@ export const componentBlocks = {
             defaultValue: 'image',
             ui: { displayMode: 'segmented-control' },
           }),
+          fit: fields.select({
+            options: [
+              { label: 'Vertical Fit', value: 'ver' },
+              { label: 'Horizontal Fit', value: 'hor' },
+            ],
+            defaultValue: 'ver',
+            ui: { displayMode: 'segmented-control' },
+          }),
         })
       ),
     },
