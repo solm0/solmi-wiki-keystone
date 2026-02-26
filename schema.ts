@@ -276,9 +276,6 @@ export const lists = {
 
   Tag: list({
     access: allowAll,
-    ui: {
-      isHidden: true,
-    },
     fields: {
       name: text(),
       posts: relationship({ ref: 'Post.tags', many: true }),

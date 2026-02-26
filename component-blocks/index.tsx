@@ -299,10 +299,11 @@ export const componentBlocks = {
         fields.object({
           alt: fields.text({ label: 'Alternate Text' }),
           imageSrc: fields.url({
-            label: 'Image URL',
+            label: 'Cloudinary Public ID',
             defaultValue: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809',
           }),
           type: fields.select({
+            label: 'Type',
             options: [
               { label: 'Image', value: 'image' },
               { label: 'Video', value: 'video' },
@@ -312,6 +313,7 @@ export const componentBlocks = {
             ui: { displayMode: 'segmented-control' },
           }),
           fit: fields.select({
+            label: 'Fit',
             options: [
               { label: 'Vertical Fit', value: 'ver' },
               { label: 'Horizontal Fit', value: 'hor' },
@@ -319,6 +321,10 @@ export const componentBlocks = {
             defaultValue: 'ver',
             ui: { displayMode: 'segmented-control' },
           }),
+          isGif: fields.checkbox({
+            label: 'isGif',
+            defaultValue: false,
+          })
         })
       ),
     },
