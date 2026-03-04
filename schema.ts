@@ -236,6 +236,10 @@ export const lists = {
         defaultValue: false,
       }),
 
+      work: checkbox({
+        defaultValue: false,
+      }),
+
       order: integer(),
 
       status: select({
